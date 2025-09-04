@@ -10,7 +10,7 @@ public enum WebhookEvent {
     CASH_OUT("cashout"),
     INFRACTION("infraction");
 
-    private String value;
+    private final String value;
 
     WebhookEvent(String value) {
         this.value = value;

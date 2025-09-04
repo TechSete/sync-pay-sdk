@@ -1,16 +1,17 @@
 package tech.techsete.sync_pay_sdk.dtos.request;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tech.techsete.sync_pay_sdk.deserializers.MultiFormatDateDeserializer;
 import tech.techsete.sync_pay_sdk.enums.WebhookEventStatus;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 @Getter
 @Setter
@@ -53,12 +54,12 @@ public class WebhookEventRequest implements Serializable {
         private String paymentMethod;
 
         @JsonProperty("created_at")
-        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-        private LocalDateTime createdAt;
+        @JsonDeserialize(using = MultiFormatDateDeserializer.class)
+        private OffsetDateTime createdAt;
 
         @JsonProperty("updated_at")
-        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-        private LocalDateTime updatedAt;
+        @JsonDeserialize(using = MultiFormatDateDeserializer.class)
+        private OffsetDateTime updatedAt;
 
         @Getter
         @Setter

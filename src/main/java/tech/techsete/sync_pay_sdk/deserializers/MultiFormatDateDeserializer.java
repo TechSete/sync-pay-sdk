@@ -22,6 +22,8 @@ public class MultiFormatDateDeserializer extends JsonDeserializer<OffsetDateTime
     @Override
     public OffsetDateTime deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
         String value = p.getText().trim();
+        value = value.replace('\u00A0', ' ').trim();
+
         for (DateTimeFormatter formatter : FORMATTERS) {
             try {
                 if (formatter == FORMATTERS.get(0)) { // sem timezone
