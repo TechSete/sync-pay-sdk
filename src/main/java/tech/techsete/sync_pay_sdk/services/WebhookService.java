@@ -48,11 +48,15 @@ public class WebhookService {
                 .bodyToMono(String.class);
     }
 
-    public Page<WebhookResponse> findAllWebhooks(Map<String, ?> headers, Map<String, Object> queryParams) {
+    public Page<WebhookResponse> findAllWebhooks(Map<String, ?> headers) {
+        return findAllWebhooksAsync(headers, null).block();
+    }
+
+    public Page<WebhookResponse> findAllWebhooks(Map<String, ?> headers, Map<String, ?> queryParams) {
         return findAllWebhooksAsync(headers, queryParams).block();
     }
 
-    public Mono<Page<WebhookResponse>> findAllWebhooksAsync(Map<String, ?> headers, Map<String, Object> queryParams) {
+    public Mono<Page<WebhookResponse>> findAllWebhooksAsync(Map<String, ?> headers, Map<String, ?> queryParams) {
         return webClient.get()
                 .uri(uriBuilder -> {
                     uriBuilder.path(baseURL);
