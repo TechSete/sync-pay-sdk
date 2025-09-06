@@ -28,6 +28,9 @@ public class CashInRequest implements Serializable {
     @JsonProperty("description")
     private String description;
 
+    @JsonProperty("webhook_url")
+    private String webhookUrl;
+
     @JsonProperty("client")
     private Client client;
 
