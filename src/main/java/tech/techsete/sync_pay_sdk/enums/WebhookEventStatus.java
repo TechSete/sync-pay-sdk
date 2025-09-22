@@ -6,11 +6,13 @@ import lombok.Getter;
 
 @Getter
 public enum WebhookEventStatus {
-    PENDING("pending"),
     COMPLETED("completed"),
     FAILED("failed"),
+    MED("med"),
+    PAID_OUT("paid_out"),
+    PENDING("pending"),
     REFUNDED("refunded"),
-    MED("med");
+    WAITING_FOR_APPROVAL("waiting_for_approval");
 
     private final String value;
 
