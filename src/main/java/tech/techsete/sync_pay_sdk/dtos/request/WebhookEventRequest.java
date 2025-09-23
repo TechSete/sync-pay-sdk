@@ -32,49 +32,75 @@ public class WebhookEventRequest implements Serializable {
         @JsonProperty("id")
         private String id;
 
-        @JsonProperty("client")
-        private Client client;
-
-        @JsonProperty("pix_key")
-        private String pixCode;
-
         @JsonProperty("amount")
         private Integer amount;
-
-        @JsonProperty("final_amount")
-        private Integer finalAmount;
-
-        @JsonProperty("currency")
-        private String currency;
 
         @JsonProperty("status")
         private WebhookEventStatus status;
 
-        @JsonProperty("payment_method")
-        private String paymentMethod;
+        @JsonProperty("user_id")
+        private String userId;
 
-        @JsonProperty("created_at")
-        @JsonDeserialize(using = MultiFormatDateDeserializer.class)
-        private OffsetDateTime createdAt;
+        @JsonProperty("checkout")
+        private Checkout checkout;
 
-        @JsonProperty("updated_at")
+        @JsonProperty("client_name")
+        private String clientName;
+
+        @JsonProperty("paymentcode")
+        private String paymentCode;
+
+        @JsonProperty("client_email")
+        private String clientEmail;
+
+        @JsonProperty("data_registro")
         @JsonDeserialize(using = MultiFormatDateDeserializer.class)
-        private OffsetDateTime updatedAt;
+        private OffsetDateTime dataRegistro;
+
+        @JsonProperty("idtransaction")
+        private String idTransaction;
+
+        @JsonProperty("taxa_deposito")
+        private Double taxaDeposito;
+
+        @JsonProperty("adquirente_ref")
+        private String adquirenteRef;
+
+        @JsonProperty("client_document")
+        private String clientDocument;
+
+        @JsonProperty("taxa_adquirente")
+        private Double taxaAdquirente;
+
+        @JsonProperty("deposito_liquido")
+        private Double depositoLiquido;
+
+        @JsonProperty("externalreference")
+        private String externalReference;
+
+        @JsonProperty("paymentCodeBase64")
+        private String paymentCodeBase64;
 
         @Getter
         @Setter
         @NoArgsConstructor
         @AllArgsConstructor
-        public static class Client {
+        private static class Checkout implements Serializable {
 
-            @JsonProperty("name")
-            private String name;
+            @JsonProperty("utm_term")
+            private String utmTerm;
 
-            @JsonProperty("email")
-            private String email;
+            @JsonProperty("utm_medium")
+            private String utmMedium;
 
-            @JsonProperty("document")
-            private String document;
+            @JsonProperty("utm_source")
+            private String utmSource;
+
+            @JsonProperty("utm_content")
+            private String utmContent;
+
+            @JsonProperty("utm_campaign")
+            private String utmCampaign;
         }
     }
 }

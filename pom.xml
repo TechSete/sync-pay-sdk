@@ -12,7 +12,7 @@
 
     <groupId>tech.techsete</groupId>
     <artifactId>sync-pay-sdk</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <name>SyncPay SDK</name>
     <description>Biblioteca SDK para integrações de pagamentos com o SyncPay</description>
     <url>https://github.com/TechSete/sync-pay-sdk</url>
