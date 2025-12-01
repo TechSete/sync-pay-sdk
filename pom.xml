@@ -6,13 +6,13 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.5</version>
+		<version>3.5.8</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
     <groupId>tech.techsete</groupId>
     <artifactId>sync-pay-sdk</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <name>SyncPay SDK</name>
     <description>Biblioteca SDK para integrações de pagamentos com o SyncPay</description>
     <url>https://github.com/TechSete/sync-pay-sdk</url>
@@ -74,7 +74,7 @@
 	</dependencies>
 
 	<build>
-		<plugins>
+        <plugins>
             <!-- Compilador -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -131,9 +131,15 @@
                     <execution>
                         <id>sign-artifacts</id>
                         <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
+                        <goals><goal>sign</goal></goals>
+                        <configuration>
+                            <keyname>${gpg.keyname}</keyname>
+                            <passphrase>${env.GPG_PASSPHRASE}</passphrase>
+                            <gpgArguments>
+                                <arg>--pinentry-mode</arg>
+                                <arg>loopback</arg>
+                            </gpgArguments>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -148,6 +154,6 @@
                     <publishingServerId>central</publishingServerId>
                 </configuration>
             </plugin>
-		</plugins>
+        </plugins>
 	</build>
 </project>
